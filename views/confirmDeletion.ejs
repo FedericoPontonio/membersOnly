@@ -1,0 +1,31 @@
+<style>
+  .confirm-delete {
+    background-color: #fdfd96;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  .confirm-delete form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .confirm-delete button {
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+</style>
+
+<div class="confirm-delete">
+  <p>Are you sure you want to delete this message?</p>
+  <form action="" method="post">
+    <input type="hidden" name="answer" value="">
+    <button type="submit" class="btn btn-danger" onclick="document.getElementsByName('answer')[0].value='yes'">Yes</button>
+    <button type="submit" class="btn btn-default" onclick="document.getElementsByName('answer')[0].value='no'">No</button>
+  </form>
+</div>
+

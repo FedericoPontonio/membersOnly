@@ -1,0 +1,45 @@
+<style>
+    #signUpForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #signUpForm label {
+        margin-bottom: 10px;
+    }
+
+    #signUpForm input {
+        margin-bottom: 20px;
+    }
+
+    #signUpForm button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+
+<form id="signUpForm" action="/signUp" method="post">
+    <label for="email">Email</label>
+    <input type="email" name="email" required>
+
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" required>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" required>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" name="confirmPassword" required>
+
+    <button type="submit">Submit</button>
+
+</form>

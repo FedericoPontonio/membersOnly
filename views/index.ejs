@@ -1,0 +1,25 @@
+<% if (message) { %>
+    <div class="alert alert-info"><%= message %></div>
+<% } %>
+
+<% messages.forEach(function(message) { %>
+    <div class="message">
+      <% if (isAuthenticated && user.is_member) { %>
+        <p><strong><%= message.first_name %> <%= message.last_name %>:</strong>
+      <% } else { %>
+        <p><strong>Anonymous:</strong>
+      <% } %>
+      <%= message.content %></p>
+      <p><em>Added: <%= message.timestamp %></em></p>
+      <% if (isAuthenticated && user.is_member) { %>
+        <a href="/deleteMessage/<%= message.message_id %>"><button>Delete message</button></a>
+        <% } %>
+      
+    </div>
+  <% }); %>
+
+  <% if (isAuthenticated) { %>
+  <a href="/newMessage">Create a new message</a>
+  <% } else { %>
+  <p style="font-style: italic; color: #666">Sign up or log in to post a message</p>
+  <% } %>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
+    <title>Members Only</title>
+</head>
+<body>
+    <style>
+        #header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #dfd;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .regular-user {
+            color: darkblue;
+            font-weight: bold;
+        }
+        .admin {
+            color: darkgreen;
+            font-weight: bold;
+        }
+        .not-authenticated {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <header id="header">
+        <div>
+            <a href="/">Home</a>
+        </div>
+        <div>
+            <% if (isAuthenticated) { %>
+                <% if (!user.is_member) { %>
+                    <a href="/obtainPrivileges">Insert secret password</a>
+                    <p class="regular-user">User status: Regular User.</p>
+                <% } else { %>
+                    <p class="admin">User status: Admin.</p>
+                <% } %>
+                <p>Welcome back, <%= user.first_name %>!</p>
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <p class="not-authenticated">User status: Not authenticated</p>
+                <a href="/login">Login</a>
+                <a href="/signUp">Sign Up</a>
+            <% } %>
+        </div>
+    </header>
+    <%- body %>
+
+</body>
+</html>
