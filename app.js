@@ -16,7 +16,7 @@ const deleteMessageRouter = require('./routes/messagesRoute/deleteMessage');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(
-    session({ secret: "cats", resave: false, saveUninitialized: false, cookie: { maxAge: 24 * 60 * 60 * 1000 }, })
+    session({ secret: "cats", resave: false, saveUninitialized: false, cookie: { maxAge: 24 * 60 * 60 * 1000 },      secure: process.env.NODE_ENV === "production",})
   );
 app.use(passport.initialize());
 app.use(passport.session());

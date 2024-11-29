@@ -28,6 +28,10 @@
             color: red;
             font-weight: bold;
         }
+        .shady {
+            font-size: 0.8em;
+            color: #e3dddd;
+        }
     </style>
     <header id="header">
         <div>
@@ -36,7 +40,7 @@
         <div>
             <% if (isAuthenticated) { %>
                 <% if (!user.is_member) { %>
-                    <a href="/obtainPrivileges">Insert secret password</a>
+                    <a href="/obtainPrivileges">Insert secret password <br><em class="shady">(to obtain admin privileges)</em></a>
                     <p class="regular-user">User status: Regular User.</p>
                 <% } else { %>
                     <p class="admin">User status: Admin.</p>
