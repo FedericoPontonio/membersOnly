@@ -1,3 +1,29 @@
+<% if (message && message.length > 0) { %>
+    <div class="alert alert-error">
+        <% message.forEach(msg => { %>
+            <p><%= msg %></p>
+        <% }) %>
+    </div>
+    <div class="triangle"></div>
+<% } %>
+
+
+<form method="post">
+    <label for="email">Email</label>
+    <input type="email" name="email">
+
+    <label for="password">Password</label>
+    <input type="password" name="password">
+
+    <button type="submit">Submit</button>
+</form>
+
+
+
+
+
+
+
 <style>
     form {
         display: flex;
@@ -19,15 +45,39 @@
         cursor: pointer;
         border-radius: 5px;
     }
+    .alert {
+        max-width: 50%;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        padding: 15px;
+        margin: 20px 0;
+        margin-left: 25%;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #17a2b8; /* Light blue for info */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 50px solid #17a2b8;
+        margin-left: 25%;
+        margin-top: -3%;
+    }
+.triangle-info {
+    border-top-color: #17a2b8;
+}
+
+.triangle.success {
+    border-top-color: #28a745; /* Green for success */
+}
+
+.triangle.error {
+    border-top-color: #dc3545; /* Red for error */
+}
 </style>
-
-<form method="post">
-    <label for="email">Email</label>
-    <input type="email" name="email">
-
-    <label for="password">Password</label>
-    <input type="password" name="password">
-
-    <button type="submit">Submit</button>
-</form>
-

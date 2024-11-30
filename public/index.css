@@ -15,15 +15,29 @@ body {
 
 /* Alert Box */
 .alert {
+    max-width: 50%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    margin-left: 25%;
+    align-items: center;
+    font-size: 1.5rem;
     padding: 15px;
-    margin: 20px 0;
     border-radius: 5px;
-    font-size: 1rem;
     color: #fff;
     background-color: #17a2b8; /* Light blue for info */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 50px solid #17a2b8;
+    margin-left: 25%;
+    margin-top: -50px;
+}
 .alert-info {
     background-color: #17a2b8;
 }

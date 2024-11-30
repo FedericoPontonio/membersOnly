@@ -7,7 +7,7 @@ const middlewares = require('../../middlewares/middlewares')
 router.get('/', (req, res) => {
     res.render('signUp')
 })
-router.post('/', middlewares.validatePassword, middlewares.validateEmail, async (req, res) => {
+router.post('/', middlewares.validateCreatePassword, middlewares.validateSignUpEmail, async (req, res) => {
     try {
         await controller.signUp(req.body);
         res.redirect('/?message=User+created+successfully!');

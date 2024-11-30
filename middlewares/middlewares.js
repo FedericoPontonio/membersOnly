@@ -1,6 +1,6 @@
 const queries = require('../db/usersQueries');
 
-const validatePassword = (req, res, next) => {
+const validateCreatePassword = (req, res, next) => {
     if (req.body.password !== req.body.confirmPassword) {
         return res.status(400).json({
             error: "Passwords do not match. Please try again.",
@@ -9,7 +9,8 @@ const validatePassword = (req, res, next) => {
     next();
 };
 
-const validateEmail = async (req, res, next) => {
+
+const validateSignUpEmail = async (req, res, next) => {
     const registeredEmails = await queries.retrieveAllEmails();
     for (let i =0;i<registeredEmails.length; i++ ) {
         if (req.body.email === registeredEmails[i].email) {
@@ -19,6 +20,17 @@ const validateEmail = async (req, res, next) => {
         }
     };
     next();
+};
+
+const validateLoginEmail = async (req, res, next) => {
+    const registeredEmails = await queries.retrieveAllEmails();
+    for (let i =0;i<registeredEmails.length; i++ ) {
+        if (req.body.email === registeredEmails[i].email) {
+            return next();
+        }
+    };
+    req.flash('error', 'Email not registered. Please sign up or check your entry.');
+    res.redirect('/login');
 };
 
 const validateSecretCode = (req, res, next) => {
@@ -40,8 +52,9 @@ const ensureAuthenticated = (req, res, next) => {
 };
 
 module.exports = {
-    validatePassword,
-    validateEmail,
+    validateCreatePassword,
+    validateSignUpEmail,
     validateSecretCode,
     ensureAuthenticated,
+    validateLoginEmail,
 }

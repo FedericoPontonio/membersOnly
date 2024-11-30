@@ -1,16 +1,18 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('../../config/passport');
+const middlewares = require('../../middlewares/middlewares');
 
 
 
 
 router.get('/', async (req, res) => {
-    res.render("login")
+    res.render("login");
 });
 
 router.post(
     '/',
+    middlewares.validateLoginEmail,
     passport.authenticate("local", {
         successRedirect: "/",
         failureRedirect: "/login",
